@@ -5,6 +5,10 @@ const int MAXN=300004;
 const int D=27;
 char s[300004];
 int n;
+/**
+这里是统计回文子串的最大的出现值
+出现值定义：出现次数*回文串长度
+**/
 struct PAM{
     int last,cnt;
     int fa[MAXN],sz[MAXN],len[MAXN],ch[MAXN][D];
