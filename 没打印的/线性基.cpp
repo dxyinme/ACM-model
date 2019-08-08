@@ -64,6 +64,31 @@ LinearBasis Merge(const LinearBasis &n1,const LinearBasis &n2){
     return ret;
 }
 
+// 线性基求交集
+LinearBasis Inter(LinearBasis n1,LinearBasis n2){
+    LinearBasis a=n2,b=n2;
+    LinearBasis ret=LinearBasis();
+    for(int i=0;i<n1.sz;i++){
+        if(!n1.bs[i])continue;
+        ll temp=0,x=n1.bs[i];
+        int j;
+        for(j=i;j>=0;j--){
+            if(x&(1LL<<j)){
+                if(a.bs[j]){
+                    x^=a.bs[j];
+                    temp^=b.bs[j];
+                }
+                else break;
+            }
+        }
+        if(x==0)ret.bs[i]=temp;
+        else{
+            a.bs[j]=x;
+            b.bs[j]=temp;
+        }
+    }
+    return ret;
+}
 int main(){
 
     return 0;
